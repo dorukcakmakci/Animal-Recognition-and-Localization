@@ -1,0 +1,22 @@
+The easiest way to run our code on your local computer is the following:
+    * First you should download anaconda to your computer.
+    * After anaconda is installed you should create a conda environment and install pytorch. A requirements.txt file
+      is provided with submission file for the dependencies. the commands below for Windows is below:
+        - conda create -n env_name python=3.7
+        - source activate env_name
+        - pip install requirements.txt
+        - conda install pytorch-cpu -c pytorch
+        OR
+        - pip3 install torchvision
+    * Download piotr's toolbox to use edgeboxes method.
+    * Also if not present, download Computer Vision Toolbox of MATLAB and export_fig function by Yair Altman.
+    * Do the following operations in the following order:
+        - run train.py
+        - run calculate_bounding_boxes.m (under /src/matlab)
+        - run test.py
+        - run calculate_localization_percentage.py
+        - run create_image_with_localization.m
+
+In order to generate the classification results presented in the report, you should only run "test.py" before running any other code. This is because the training set is shuffled before training an SVM therefore results may differ slightly from run to run.
+
+In order to execute project fully, you must first run "train.py" and preprocess training set images, train classifiers on the resulting images. Then, you should run calculate_bounding_boxes.m to generate candidate windows and their bounding-boxes for test images. In order to run this MatLab function, Structured Edge Detection Toolbox and Image & Video Matlab Toolbox by Piotr, and export_fig folders by Yair Altman should all be in the same directory with calculate_bounding_boxes.m and they and their sub-folders should be added to the workspace path. The function generates 50 cropped images for each test image in a directory called cropped_images/[imageIndex]. This MatLab function also generates an additional image, all of the 50 bounding-boxes over the original test image, which is located at cropped_images/[imageIndex]/bbox_plot.png for each test image. Furthermore, you should run test.py to preprocess test images and generate classification results. calculate_location_percentage.py must be run to calculate the localization results for the best candidate windows of the images and lastly, create_image_with_localization.m creates and image with the best candidate window is drawn over it. These images can also be found at cropped_images/[imageIndex]/localization_plot.png.
