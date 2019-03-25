@@ -1,4 +1,4 @@
-# Animal-Classifier
+# Animal Recognition and Localization
 
 This project includes a multi-class SVM to classify animal images and object localization code to locate the classified animal frames in the images. 
 
